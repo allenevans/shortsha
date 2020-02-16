@@ -1,16 +1,23 @@
 import * as core from '@actions/core';
+import { ActionInput } from './types/action-input';
+import { resetAllWhenMocks, when } from 'jest-when';
 
-jest.mock('@actions/core', () => ({
-  exportVariable: jest.fn(),
-  getInput: jest.fn(),
-  setFailed: jest.fn(),
-}));
+jest.mock('@actions/core');
 
 const EXAMPLE_SHA = '77d292e2da837e7990c7ac1d4794835d9cffd736';
+
+const mockInput = (input: Partial<ActionInput>) => {
+  Object.keys(input).forEach((key) => {
+    when(<jest.Mock>core.getInput)
+      .calledWith(key)
+      .mockReturnValue(`${input[key]}`);
+  });
+};
 
 describe('short-sha', () => {
   beforeEach(() => {
     process.env.GITHUB_SHA = EXAMPLE_SHA;
+    resetAllWhenMocks();
   });
 
   afterEach(() => {
@@ -29,9 +36,11 @@ describe('short-sha', () => {
   });
 
   it('should allow the length of the sha to be changed', () => {
-    jest.isolateModules(() => require('./main'));
+    mockInput({
+      length: 3,
+    });
 
-    process.env.INPUT_LENGTH = '3';
+    jest.isolateModules(() => require('./main'));
 
     expect(core.exportVariable).toHaveBeenCalledTimes(1);
     expect(core.exportVariable).toHaveBeenCalledWith('SHORT_SHA', '77d');
@@ -47,38 +56,46 @@ describe('short-sha', () => {
   });
 
   it('should be able to get the last 7 characters of the commit sha', () => {
-    jest.isolateModules(() => require('./main'));
+    mockInput({
+      offset: -7,
+    });
 
-    process.env.INPUT_OFFSET = '-1';
+    jest.isolateModules(() => require('./main'));
 
     expect(core.exportVariable).toHaveBeenCalledTimes(1);
     expect(core.exportVariable).toHaveBeenCalledWith('SHORT_SHA', 'cffd736');
   });
 
   it('should be able to get the middle 8 characters of the commit sha, from the left', () => {
-    jest.isolateModules(() => require('./main'));
+    mockInput({
+      offset: 16,
+      length: 8,
+    });
 
-    process.env.INPUT_OFFSET = '7';
-    process.env.INPUT_LENGTH = '8';
+    jest.isolateModules(() => require('./main'));
 
     expect(core.exportVariable).toHaveBeenCalledTimes(1);
     expect(core.exportVariable).toHaveBeenCalledWith('SHORT_SHA', '90c7ac1d');
   });
 
   it('should be able to get the middle 8 characters of the commit sha, from the right', () => {
-    jest.isolateModules(() => require('./main'));
+    mockInput({
+      offset: -24,
+      length: 8,
+    });
 
-    process.env.INPUT_OFFSET = '-24';
-    process.env.INPUT_LENGTH = '8';
+    jest.isolateModules(() => require('./main'));
 
     expect(core.exportVariable).toHaveBeenCalledTimes(1);
     expect(core.exportVariable).toHaveBeenCalledWith('SHORT_SHA', '90c7ac1d');
   });
 
   it('should be able to use a different sha', () => {
-    jest.isolateModules(() => require('./main'));
+    mockInput({
+      sha: '8dd42301aff45e2262c3565fc893f8072bf38497',
+    });
 
-    process.env.INPUT_SHA = '8dd42301aff45e2262c3565fc893f8072bf38497';
+    jest.isolateModules(() => require('./main'));
 
     expect(core.exportVariable).toHaveBeenCalledTimes(1);
     expect(core.exportVariable).toHaveBeenCalledWith('SHORT_SHA', '8dd4230');

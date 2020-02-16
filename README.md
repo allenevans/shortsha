@@ -28,7 +28,7 @@ jobs:
 | ------ | ----------- |
 | length | SHA length, default = 7 |
 | name   | Name of the environment variable to set. Default = "SHORT_SHA" |
-| offset | Where to start taking the substring of the sha. Default = 0. To start from the right, use a negative value e.g. -1 |
+| offset | Where to start taking the substring of the sha. Default = 0. To start from the right, use a negative value e.g. -7 |
 | sha    | Commit sha to be shortened. Default = "${GITHUB_SHA}" |
 
 ## Examples
@@ -55,7 +55,7 @@ steps:
 steps:
   - uses: allenevans/short-sha@v1.0.0
     with:
-      offset: -1      
+      offset: -7
 ```
 
 > Change the exported environment variable name
@@ -67,6 +67,6 @@ steps:
 
   - name: Print short sha
     run: |
-      echo "Short sha is {SHA7}"
+      echo "Short sha is ${SHA7}"
 ```
-> Github reserve the prefix `GITHUB_` for environment variables.
+_Github reserve the prefix `GITHUB_` for environment variables._
