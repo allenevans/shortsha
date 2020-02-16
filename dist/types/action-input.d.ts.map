@@ -1,0 +1,1 @@
+{"version":3,"file":"action-input.d.ts","sourceRoot":"","sources":["../../src/types/action-input.ts"],"names":[],"mappings":"AAAA,MAAM,WAAW,WAAW;IAC1B,CAAC,GAAG,EAAE,MAAM,GAAG,MAAM,GAAG,MAAM,CAAC;IAC/B,MAAM,EAAE,MAAM,CAAC;IACf,IAAI,EAAE,MAAM,CAAC;IACb,MAAM,EAAE,MAAM,CAAC;IACf,GAAG,EAAE,MAAM,CAAC;CACb"}
