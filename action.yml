@@ -1,0 +1,31 @@
+name: 'short-sha'
+description: 'Export a shortened version of a commit sha as an environment variable'
+author: 'Allen Evans'
+branding:
+  icon: 'globe'
+  color: 'green'
+runs:
+  using: 'node12'
+  main: 'dist/short-sha.js'
+inputs:
+  overwrite:
+    description: 'Overwrite existing environment variables'
+    default: true
+    required: false
+
+  length:
+    description: SHA length, default = 7
+    default: 7
+    required: false
+  name:
+    description: Name of the environment variable to set. Default = "SHORT_SHA"
+    default: SHORT_SHA
+    required: false
+  offset:
+    description: Where to start taking the substring of the sha. Default = 0. To start from the right, use a negative value e.g. -1
+    default: 0
+    required: false
+  sha:
+    description: Commit sha to be shortened. Default = "${GITHUB_SHA}"
+    default: ${{ github.sha }}
+    required: false
