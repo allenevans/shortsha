@@ -1,5 +1,5 @@
 # short-sha
-Github action to that sets a short version of the github SHA as an environment variable.
+Github action that sets a short version of the github SHA as an environment variable.
 
 ## Basic usage
 > Defaults to using the `GITHUB_SHA` value.
