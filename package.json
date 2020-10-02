@@ -1,6 +1,6 @@
 {
   "name": "short-sha",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "private": true,
   "description": "Export a shortened version of a commit sha as an environment variable",
   "main": "dist/short-sha.js",
