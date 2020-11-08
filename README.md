@@ -3,7 +3,7 @@ Github action that sets a short version of the github SHA as an environment vari
 
 ## Basic usage
 > Defaults to using the `GITHUB_SHA` value.
-```
+```yaml
 name: example-pipeline
 on: [pull_request]
 
@@ -34,7 +34,7 @@ jobs:
 ## Examples
 
 > Using a different commit sha value
-```
+```yaml
 steps:
   - name: Set SHORT_SHA
     uses: allenevans/short-sha@v1.0.0
@@ -43,7 +43,7 @@ steps:
 ```
 
 > Reference a different commit sha
-```
+```yaml
 steps:
   - uses: allenevans/short-sha@v1.0.0
     with:
@@ -51,7 +51,7 @@ steps:
 ```
 
 > Last 7 characters of the commit SHA
-```
+```yaml
 steps:
   - uses: allenevans/short-sha@v1.0.0
     with:
@@ -59,7 +59,7 @@ steps:
 ```
 
 > Change the exported environment variable name
-```
+```yaml
 steps:
   - uses: allenevans/short-sha@v1.0.0
     with:
