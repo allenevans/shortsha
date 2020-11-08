@@ -1,3 +1,10 @@
+# [1.1.0](https://github.com/allenevans/short-sha/compare/v1.0.1...v1.1.0) (2020-11-08)
+
+
+### Features
+
+* version bump ([4cb2d24](https://github.com/allenevans/short-sha/commit/4cb2d24080760fe49212813cd82f5d5d30d21b12))
+
 ## [1.0.1](https://github.com/allenevans/short-sha/compare/v1.0.0...v1.0.1) (2020-10-02)
 
 
