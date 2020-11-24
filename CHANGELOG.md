@@ -1,3 +1,10 @@
+## [1.1.1](https://github.com/allenevans/short-sha/compare/v1.1.0...v1.1.1) (2020-11-24)
+
+
+### Bug Fixes
+
+* Prevent arbitrary command injection by commit comment during release. GHSL-2020-229. ([02ba1bd](https://github.com/allenevans/short-sha/commit/02ba1bd0fb4b2104a891ef13174941cdacd621d6))
+
 # [1.1.0](https://github.com/allenevans/short-sha/compare/v1.0.1...v1.1.0) (2020-11-08)
 
 
