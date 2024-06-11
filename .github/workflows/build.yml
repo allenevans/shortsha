@@ -17,6 +17,11 @@ jobs:
           ref: master
           clean: true
 
+      - name: Clean checkout
+        run: |
+          for tag in `git tag -l`; do git tag -d $tag; done
+          git fetch && git fetch -t && git checkout ${{github.head_ref}}
+
       - name: Node.js
         uses: actions/setup-node@v4
         with:
