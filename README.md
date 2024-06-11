@@ -1,6 +1,8 @@
 # short-sha
 Github action that sets a short version of the github SHA as an environment variable.
 
+_**This repository is not actively maintained**_
+
 ## Basic usage
 > Defaults to using the `GITHUB_SHA` value.
 ```yaml
