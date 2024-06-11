@@ -1,3 +1,10 @@
+# [1.2.0](https://github.com/allenevans/short-sha/compare/v1.1.1...v1.2.0) (2024-06-11)
+
+
+### Features
+
+* add readme info ([e81e2f1](https://github.com/allenevans/short-sha/commit/e81e2f10f3ba95b746ccf62ca26a0ac7de853336))
+
 ## [1.1.1](https://github.com/allenevans/short-sha/compare/v1.1.0...v1.1.1) (2020-11-24)
 
 
