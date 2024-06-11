@@ -13,8 +13,8 @@ import { inputParse } from './utils/input-parse';
       });
 
     core.exportVariable(input.name, input.sha.substr(input.offset, input.length));
-  } catch (error) {
-    core.setFailed(error.message);
+  } catch (error: unknown) {
+    core.setFailed((error as Error).message);
     process.exit(1);
   }
 })();

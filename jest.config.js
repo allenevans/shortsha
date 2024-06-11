@@ -9,7 +9,6 @@ module.exports = {
     'dist/',
     'node_modules/',
   ],
-  testURL: 'http://localhost/',
   transform: {
     '^.+\\.tsx?$': 'ts-jest',
   },
